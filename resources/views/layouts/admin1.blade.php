@@ -73,11 +73,11 @@
                         document.getElementById('logout-form').submit();"
                             class="dashboard-nav-item" style="margin-top: 45vh;">
                             <svg class="menu-icon menu-icon-normal" xmlns="http://www.w3.org/2000/svg"
-                                style=" fill: white;" viewBox="0 0 24 24">
+                                viewBox="0 0 24 24">
                                 <path
                                     d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10s-4.477 10-10 10ZM7 11V8l-5 4l5 4v-3h8v-2H7Z" />
                             </svg>
-                            <p class="menu-font ml-1 my-auto text-white">
+                            <p class="menu-font ml-1 my-auto">
                                 Log Out
                             </p>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
