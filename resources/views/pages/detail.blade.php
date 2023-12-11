@@ -81,9 +81,9 @@
                                         <p class="card-text"><strong>Status:</strong> <span
                                                 id="status">{{ $project->status }}</span>
                                         </p>
-                                        <p class="card-text"><strong>Progress:</strong> <span
+                                        {{-- <p class="card-text"><strong>Progress:</strong> <span
                                                 id="status">{{ $project->progress }}%</span>
-                                        </p>
+                                        </p> --}}
                                         <p class="card-text"><strong>Masa Aktif:</strong> <span
                                                 id="masaAktif">{{ \Carbon\Carbon::parse($project->masaaktif)->toFormattedDateString() }}</span>
                                         </p>

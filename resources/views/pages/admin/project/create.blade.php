@@ -67,13 +67,13 @@
                                     <label>Status</label>
                                     <select class="form-control" name="status" required>
                                         <option value="" disabled selected> PILIH STATUS </option>
-                                        <option value="On Progress">On Progress</option>
-                                        <option value="On Revision">On Revision</option>
-                                        <option value="Done">Done</option>
+                                        <option value="ongoing">Ongoing</option>
+                                        <option value="revision">Revision</option>
+                                        <option value="completed">Completed</option>
                                     </select>
                                 </div>
 
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label>Progress</label>
                                     <div class="input-group">
                                         <input type="number" name="progress" class="form-control" required min="1"
@@ -82,7 +82,7 @@
                                             <span class="input-group-text">%</span>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="form-group">
                                     <label>Masa Aktif</label>
                                     <input type="datetime-local" name="masaaktif" class="form-control" required>

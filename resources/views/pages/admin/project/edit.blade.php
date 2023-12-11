@@ -69,9 +69,9 @@
                                 <div class="form-group">
                                     <label>Status</label>
                                     <select class="form-control" name="status" required>
-                                        <option value="On Progress">On Progress</option>
-                                        <option value="On Revision">On Revision</option>
-                                        <option value="Done">Done</option>
+                                        <option value="ongoing">Ongoing</option>
+                                        <option value="revision">Revision</option>
+                                        <option value="completed">Completed</option>
                                         <option value="{{ $item->status }}" selected>{{ $item->status }}
                                         </option>
                                     </select>
