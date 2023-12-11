@@ -19,9 +19,9 @@
             {{-- Guest commenting --}}
             @if (isset($guest_commenting) and $guest_commenting == true)
                 <div class="form-group">
-                    <label for="message">@lang('comments::comments.enter_your_name_here')</label>
-                    <input type="text" class="form-control @if ($errors->has('guest_name')) is-invalid @endif"
-                        name="guest_name" />
+                    {{-- <label for="message">@lang('comments::comments.enter_your_name_here')</label> --}}
+                    <input type="hidden" class="form-control @if ($errors->has('guest_name')) is-invalid @endif"
+                        name="guest_name" value="{{ $client->name }}" />
                     @error('guest_name')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -29,9 +29,9 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="message">@lang('comments::comments.enter_your_email_here')</label>
-                    <input type="email" class="form-control @if ($errors->has('guest_email')) is-invalid @endif"
-                        name="guest_email" />
+                    {{-- <label for="message">@lang('comments::comments.enter_your_email_here')</label> --}}
+                    <input type="hidden" class="form-control @if ($errors->has('guest_email')) is-invalid @endif"
+                        name="guest_email" value="guest@gmail.com" />
                     @error('guest_email')
                         <div class="invalid-feedback">
                             {{ $message }}
