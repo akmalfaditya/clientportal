@@ -147,7 +147,7 @@
                                     {{ $noti->name }}
                                     project</div>
                                 <div class="text-truncate font-weight-normal text-wrap">{{ $noti->comment }}</div>
-                                <a href="/details/{{ $noti->slug }}" target="_blank"
+                                <a href="/details/comments/{{ $noti->slug }}" target="_blank"
                                     class="btn btn-outline-success btn-sm mt-2 rounded-pill">View Comment</a>
                             </div>
                             <span class="ml-auto mb-auto">
