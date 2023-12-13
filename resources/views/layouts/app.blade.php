@@ -17,7 +17,7 @@
 
 </head>
 
-<body style="margin-bottom: 15vh;">
+<body style="margin-bottom: 15vh;  {{ request()->is('details/comments*') ? 'background: #f5f6fb;' : '' }}">
 
     {{-- Navbar --}}
     {{-- @include('includes.navbar') --}}

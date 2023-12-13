@@ -76,7 +76,7 @@
     </div> --}}
 
     <section class="">
-        <div class="bg-comments" style="margin-top: 5vh;">
+        <div class="bg-comments bg-transparent" style="margin-top: 5vh; ">
             <div class="container">
                 <p class="my-auto text-dark title-comment font-weight-bold">Comment</p>
             </div>
