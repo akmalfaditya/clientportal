@@ -10,3 +10,4 @@
  <script src="/script/navbar-scroll.js"></script>
  <script src="/script/signinup.js"></script>
  <script src="/script/404.js"></script>
+ <script src="/script/details.js"></script>

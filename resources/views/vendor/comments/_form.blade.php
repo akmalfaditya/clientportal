@@ -1,5 +1,5 @@
-<div class="card">
-    <div class="card-body">
+<div class="card border-0">
+    <div class="card-body p-0">
         @if ($errors->has('commentable_type'))
             <div class="alert alert-danger" role="alert">
                 {{ $errors->first('commentable_type') }}
@@ -41,14 +41,17 @@
             @endif
 
             <div class="form-group">
-                <label for="message">@lang('comments::comments.enter_your_message_here')</label>
-                <textarea class="form-control @if ($errors->has('message')) is-invalid @endif" name="message" rows="3"></textarea>
+                {{-- <label for="message">@lang('comments::comments.enter_your_message_here')</label> --}}
+                <textarea class="form-control @if ($errors->has('message')) is-invalid @endif" name="message" rows="3"
+                    style="border-radius: 10px;" placeholder="Enter your message"></textarea>
                 <div class="invalid-feedback">
                     @lang('comments::comments.your_message_is_required')
                 </div>
                 {{-- <small class="form-text text-muted">@lang('comments::comments.markdown_cheatsheet', ['url' => 'https://help.github.com/articles/basic-writing-and-formatting-syntax'])</small> --}}
             </div>
-            <button type="submit" class="btn btn-sm btn-outline-success text-uppercase">@lang('comments::comments.submit')</button>
+            {{-- <button type="submit" class="btn btn-sm btn-outline-success text-uppercase">@lang('comments::comments.submit')</button> --}}
+            <button type="submit" class="btn btn-sm btn-primary" style="border-radius: 10px;">Send</button>
+
         </form>
     </div>
 </div>

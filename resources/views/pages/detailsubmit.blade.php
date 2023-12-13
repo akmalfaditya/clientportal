@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.apprevamp')
 
 @section('title')
     {{ $client->name }} - Portal Client

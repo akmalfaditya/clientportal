@@ -1,58 +1,13 @@
 @extends('layouts.app')
 
 @section('title')
-    Client Portal Details
+    Client Portal Comments - {{ $client->name }}
 @endsection
 
 @section('content')
     <!-- Page Content -->
-    <div class="page-content page-details">
+    {{-- <div class="page-content page-details">
 
-        <!-- Modal -->
-        {{-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Webcareidn.com</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container">
-                            <div class="card">
-                                <div class="card-body">
-                                    <p class="card-text"><strong>Jenis:</strong> <span id="keterangan">Keterangan
-                                            mengenai jenis
-                                            project</span></p>
-                                    <p class="card-text"><strong>Keterangan:</strong> <span id="keterangan">Keterangan
-                                            mengenai
-                                            project</span></p>
-                                    <p class="card-text"><strong>Deadline:</strong> <span id="deadline">Tanggal
-                                            Deadline</span></p>
-                                    <p class="card-text"><strong>Status:</strong> <span id="status">Status Project
-                                            (Contoh: Sedang
-                                            Berlangsung)</span>
-                                    </p>
-                                    <p class="card-text"><strong>Masa Aktif:</strong> <span id="masaAktif">Tanggal Masa
-                                            Aktif</span></p>
-                                    <p class="card-text"><strong>Notes:</strong> <span id="masaAktif">Lorem ipsum dolor
-                                            sit amet, ut qui
-                                            commodo sensibus, id utinam inermis constituto
-                                            vim. In nam dolorum interesset, per fierent ponderum ea. Eos aperiri feugiat
-                                            democritum ne.</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
 
 
 
@@ -118,5 +73,27 @@
 
         </div>
 
-    </div>
+    </div> --}}
+
+    <section class="">
+        <div class="bg-comments" style="margin-top: 5vh;">
+            <div class="container">
+                <p class="my-auto text-dark title-comment font-weight-bold">Comment</p>
+            </div>
+            <div class="container" style="margin-top: 5vh;">
+                @comments(['model' => $client])
+            </div>
+
+        </div>
+
+        {{-- <div class="bg-comment">
+            <div class="coloumn-send">
+                <div>
+
+                </div>
+
+            </div>
+        </div> --}}
+
+    </section>
 @endsection

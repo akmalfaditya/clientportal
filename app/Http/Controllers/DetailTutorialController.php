@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use App\Models\Project;
+use App\Models\Tutorial;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Cookie;
 
-class DetailCommentController extends Controller
+class DetailTutorialController extends Controller
 {
     /**
      * Show the application dashboard.
@@ -19,7 +20,7 @@ class DetailCommentController extends Controller
     public function index(Request $request, $id)
     {
         $client = Client::with(['projects'])->where('slug', $id)->firstOrFail();
-        $project = Project::all()->where('clients_id', $client->id)->count();
+        $tutorial = Tutorial::all();
         $data = $request->password;
 
 
@@ -43,7 +44,7 @@ class DetailCommentController extends Controller
 
                 return view('pages.detailsubmit', [
                     'client' => $client,
-                    'projecttotal' => $project,
+                    'tutorial' => $tutorial,
                 ]);
             }
 
@@ -51,9 +52,9 @@ class DetailCommentController extends Controller
             $request->session()->put('client_authenticated', $client->id);
         }
 
-        return view('pages.detailcomment', [
+        return view('pages.detailtutorial', [
             'client' => $client,
-            'projecttotal' => $project,
+            'tutorial' => $tutorial,
 
         ]);
     }

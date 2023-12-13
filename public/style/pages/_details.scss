@@ -1,5 +1,89 @@
+// Font Family
+//montserrat
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap");
+
+//poppins
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap");
+
+$primary-details: #0346e3;
+$secondary-details: #ffffff;
+$card1-details: #0068ff;
+$font-subtitle-card: #8e9faf;
+
+.bg-nav {
+  background: $secondary-details;
+
+  .nav-link {
+    svg {
+      fill: #8e9faf;
+    }
+    svg.active {
+      fill: #0368fb;
+    }
+  }
+}
+
+.bg-content {
+  background: $primary-details;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
 .page-details {
-  margin-top: 30px;
+  background: $secondary-details;
+  border-radius: 20px 20px 0px 0px;
+  padding-top: 10px;
+
+  .bg-details {
+    background: $primary-details;
+  }
+
+  .btn-contact {
+    background: $primary-details;
+  }
+
+  .bg1-details {
+    background: $primary-details;
+  }
+
+  .link-card {
+    text-decoration: none;
+    margin-top: 16px;
+  }
+
+  .radius-client-project {
+    position: relative;
+    border-radius: 15px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0px;
+      bottom: 0;
+      background: #0068ff;
+      width: 15px;
+      border-radius: 15px 0 0 15px;
+    }
+
+    // adding class svg
+    .svg-deadline,
+    .svg-status {
+      width: 12px;
+      fill: $font-subtitle-card;
+    }
+
+    .p-deadline,
+    .p-status {
+      color: $font-subtitle-card;
+      font-family: "Poppins", sans-serif;
+    }
+
+    .font-btn {
+      color: $primary-details;
+      margin: auto;
+    }
+  }
 
   h5 {
     color: #0c0d36;
@@ -7,7 +91,7 @@
     font-weight: 300;
   }
 
-  .store-heading {
+  .details-heading {
     margin-bottom: 10px;
 
     h1 {
@@ -70,30 +154,14 @@
     }
   }
 
-  .store-gallery {
-    margin-bottom: 20px;
-
-    img {
-      border-radius: 10px;
-    }
-
-    .thumbnail-image {
-      margin-bottom: 20px;
-      border: 2px solid transparent;
-      &:hover,
-      &.active {
-        border: 2px solid #ff7158;
-      }
-    }
-  }
-  .store-description {
+  .details-description {
     p {
       font-size: 16px;
       color: #525252;
       line-height: 180%;
     }
   }
-  .store-review {
+  .details-review {
     .media {
       img {
         max-width: 50px;
@@ -112,17 +180,29 @@
       }
     }
   }
+
+  @media (max-width: 768px) {
+    .radius-client-project {
+      &::before {
+        width: 15px;
+        border-radius: 15px 0 0 15px;
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    .radius-client-project {
+      &::before {
+        width: 5px;
+        border-radius: 15px 0 0 15px;
+      }
+    }
+  }
 }
 
 // Section 1  details
 .rounded-contact {
   border-radius: 20px;
-}
-
-.p-card-1 {
-  width: 70%;
-  padding: 10px 10px 10px 10px;
-  border-radius: 10px;
 }
 
 .w-image-card {
@@ -142,22 +222,18 @@
 }
 
 @include media-breakpoint-down(sm) {
-  .p-card-1 {
-    width: 100%;
+  .h2-contact {
+    font-size: 18px;
+  }
 
-    .h2-contact {
-      font-size: 18px;
-    }
+  .p-contact {
+    font-size: 12px;
+  }
 
-    .p-contact {
-      font-size: 12px;
-    }
-
-    .btn-contact {
-      font-size: 12px;
-      padding: 10px 20px 10px 20px;
-      line-height: 1;
-    }
+  .btn-contact {
+    font-size: 12px;
+    padding: 10px 20px 10px 20px;
+    line-height: 1;
   }
 
   .border-contact-mobile {
@@ -236,11 +312,6 @@
   }
 }
 
-// section description
-.radius-client-project {
-  border-radius: 15px;
-}
-
 @include media-breakpoint-down(sm) {
   .radius-client-project {
     padding: 5px 5px 5px 5px;
@@ -253,14 +324,14 @@
 }
 
 .img-client {
-  width: 70%;
+  width: 50%;
 }
 
 @include media-breakpoint-down(sm) {
+  .section-description-1,
   .img-client {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
+    width: 0;
+    display: none;
   }
 }
 
@@ -271,10 +342,14 @@
 
 .font-title-project {
   font-size: 28px;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
 }
 
 .font-subtitle-project {
+  color: $font-subtitle-card;
   font-size: 16px;
+  font-family: "Poppins", sans-serif;
 }
 
 .btn-details {
@@ -285,21 +360,21 @@
 
 @include media-breakpoint-down(sm) {
   .section-description-2 {
-    width: 70%;
+    width: 100%;
   }
 
   .font-title-project {
-    font-size: 16px;
-    margin: 8px 0px 16px;
+    font-size: 15px;
+    font-weight: bold;
   }
 
   .font-subtitle-project {
-    font-size: 12px;
-    margin: 0px;
+    font-size: 11px;
+    margin-bottom: 20px;
   }
 
   .btn-details-mobile {
-    margin: 10px 0px 0px 0px;
+    margin: 5px 0px 0px 0px;
   }
 
   .btn-details {
@@ -323,71 +398,373 @@
 }
 
 @include media-breakpoint-down(sm) {
-  .svg-clock {
-    width: 12px;
+  .svg-deadline,
+  .svg-status {
+    width: 11px;
   }
 
-  .p-deadline {
-    font-size: 12px;
-  }
-
+  .p-deadline,
   .p-status {
-    font-size: 12px;
+    font-size: 11px;
   }
 }
 
-// Comments & Reply
-// Prefix
-$prefix: bs-;
-$sk-variable-prefix: sk-;
+// adding style for navbar menu
+.bg-navbar {
+  background: $secondary-details;
+  // margin-top: 20px;
+  border-radius: 0px 0px 10px 10px;
 
-body {
-  --bs-font-sans-serif: Roboto, Arial, sans-serif, system-ui, -apple-system,
-    "Segoe UI", "Helvetica Neue", "Noto Sans", "Liberation Sans",
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-size: 0.875rem;
-}
-
-$comment-img-size: 3rem;
-$comment-img-size-sm: 1.75rem;
-
-.comment {
-  &-img {
-    display: inline-block;
-    width: $comment-img-size;
-    height: $comment-img-size;
-    background-color: var(--#{$prefix}secondary-bg);
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 15px;
+    background: linear-gradient(15deg, #0068ff 0%, #e2e9ff 100%);
+    border-radius: 0px;
   }
 
-  &-replies &-img {
-    width: $comment-img-size-sm;
-    height: $comment-img-size-sm;
+  .width-menu {
+    width: 20px;
+    height: 20px;
   }
 
-  a,
-  &-replies a {
-    text-decoration: none !important;
+  .content-nav {
+    margin: 10px 80px 5px 80px;
+    padding: 15px 0px;
+
+    .font-nav {
+      font-family: "Poppins", sans-serif;
+    }
+
+    svg {
+      fill: #8e9faf;
+    }
+    
+    svg.active {
+      fill: #0368fb;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .content-nav {
+      margin: 10px 40px 5px 40px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    display: none !important;
   }
 }
 
-.form-floating.comment-compose > .form-control,
-.form-floating.comment-compose > .form-control:focus {
-  border: 0;
-  box-shadow: none;
-  background-color: transparent;
-  border-bottom: 2px var(--bs-border-style) var(--bs-body-color);
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  padding: 1rem 0.15rem 0.5rem;
+// Filter New
+.bg-filter {
+  background: #015ee4;
+  padding: 15px 0px;
+  overflow-x: auto;
+
+  .text-filter-set,
+  .active {
+    color: #0368fb;
+    background: $secondary-details;
+  }
+
+  .text-filter-set {
+    margin-left: 0px;
+  }
+
+  .text-filter {
+    color: $secondary-details;
+    background: #0368fb;
+  }
+
+  @media (max-width: 576px) {
+    .active {
+      margin-left: 5px;
+    }
+
+    .px-lg-5,
+    .px-lg-4,
+    .px-lg-3 {
+      padding: 5px 30px;
+    }
+
+    .text-filter-set {
+      &:first-child {
+        margin-left: 140px;
+      }
+    }
+
+    .text-filter {
+      margin-left: 5px;
+    }
+  }
 }
 
-.form-floating.comment-compose > label,
-.form-floating.comment-compose > .form-control:focus ~ label::after,
-.form-floating.comment-compose
-  > .form-control:not(:placeholder-shown)
-  ~ label::after {
-  color: var(--bs-secondary-color);
-  background-color: transparent;
-  padding: 0;
-  line-height: 1;
+//   .text-filter-white {
+//     &.button {
+//       color: #015ee4;
+//       background: $secondary-details;
+//     }
+//   }
+
+//   .margin-filter-white {
+//     &.button {
+//       padding: 3px 30px;
+//       margin-left: 35px;
+//     }
+//   }
+
+//   .margin-filter-blue {
+//     &.button {
+//       margin-right: 20px;
+//     }
+//   }
+
+//   @include media-query(1200px) {
+//     .margin-filter-white,
+//     .text-filter-white,
+//     .text-filter-blue {
+//       padding: 5px 80px;
+//     }
+//   }
+
+//   @include media-query(992px) {
+//     .margin-filter-white,
+//     .text-filter-white,
+//     .text-filter-blue {
+//       padding: 5px 50px;
+//     }
+//   }
+
+//   @include media-query(768px) {
+//     .margin-filter-white,
+//     .text-filter-white,
+//     .text-filter-blue {
+//       padding: 5px 30px;
+//     }
+//   }
+
+//   @include media-query(576px) {
+//     padding: 12px 0px;
+
+//     .margin-filter-white {
+//       padding: 3px 30px;
+//       margin-left: 35px;
+//     }
+
+//     .margin-filter-blue {
+//       margin-right: 20px;
+//     }
+
+//     .text-filter-white,
+//     .text-filter-blue {
+//       padding: 3px 10px;
+//       font-size: 14px;
+//     }
+//   }
+// }
+
+// @mixin media-query($breakpoint) {
+//   @media (max-width: $breakpoint) {
+//     @content;
+//   }
+// }
+
+// Circle Profile
+.profile {
+  background: #0068ff;
+  // margin-top: 20vh;
+
+  .bg-profile {
+    margin: 0px 36px;
+    padding: 20px 0px;
+
+    .text-welcome {
+      color: $secondary-details;
+    }
+
+    .d-flex {
+      position: relative;
+    }
+
+    .circle-container {
+      width: 80px;
+      height: 80px;
+    }
+
+    .circle-image {
+      object-fit: cover;
+    }
+
+    .circle-name {
+      width: 30px;
+      height: 30px;
+      bottom: 0;
+      left: 0;
+      background: $secondary-details;
+      border: 2px solid $primary-details;
+
+      p {
+        color: $primary-details;
+        font-size: 16px;
+      }
+    }
+
+    .span-profile {
+      font-size: 40px;
+      font-weight: lighter;
+      margin: 0px 42px;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    // margin-top: 20vh;
+
+    .bg-profile {
+      .circle-name {
+        width: 28px;
+        height: 28px;
+      }
+
+      .span-profile {
+        font-size: 40px;
+        margin: 0px 42px;
+      }
+    }
+  }
+
+  @media (max-width: 992px) {
+    // margin-top: 20vh;
+
+    .bg-profile {
+      .text-name {
+        font-size: 24px;
+      }
+
+      .text-welcome {
+        font-size: 13px;
+      }
+
+      .circle-container {
+        width: 80px;
+        height: 80px;
+      }
+
+      .circle-name {
+        width: 26px;
+        height: 26px;
+
+        p {
+          font-size: 14px;
+        }
+      }
+
+      .span-profile {
+        font-size: 30px;
+        margin: 0px 22px;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    // margin-top: 0vh;
+
+    .bg-profile {
+      .circle-name {
+        width: 26px;
+        height: 26px;
+      }
+
+      .circle-container {
+        width: 80px;
+        height: 80px;
+      }
+
+      .span-profile {
+        font-size: 30px;
+        font-weight: lighter;
+        margin: 0px 22px;
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    margin: 0px;
+    padding: 0px;
+
+    .bg-profile {
+      .text-name {
+        font-size: 20px;
+      }
+
+      .text-welcome {
+        font-size: 12px;
+      }
+
+      .circle-container {
+        width: 80px;
+        height: 80px;
+      }
+
+      .circle-name {
+        width: 26px;
+        height: 26px;
+
+        p {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+// Circle Percentage Range
+.percentage-circle {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.percentage-svg {
+  width: 150px;
+  height: 150px;
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+
+  .circle-bg {
+    stroke: #f3f4f7;
+    stroke-width: 6px;
+    fill: transparent;
+  }
+
+  .circle {
+    stroke-width: 6px;
+    stroke-dasharray: 314.2052917480469;
+    fill: transparent;
+  }
+
+  .percentage {
+    font-family: "Poppins", sans-serif;
+    font-size: 25px;
+    text-anchor: middle;
+    stroke-width: 0;
+    fill: #041322;
+    font-weight: 600;
+  }
+
+  @media (max-width: 576px) {
+    width: 75px;
+    height: 75px;
+
+    .circle,
+    .circle-bg {
+      stroke-width: 10px;
+    }
+
+    .percentage {
+      font-size: 18px;
+    }
+  }
 }

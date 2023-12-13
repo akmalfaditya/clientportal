@@ -6,9 +6,13 @@
     }
 @endphp
 
-@if($comments->count() < 1)
+@if ($comments->count() < 1)
     <div class="alert alert-warning">@lang('comments::comments.there_are_no_comments')</div>
 @endif
+
+
+
+
 
 <div>
     @php
@@ -22,39 +26,35 @@
             $slicedParentComments = $parentComments->slice($page * $perPage, $perPage);
 
             $m = Config::get('comments.model'); // This has to be done like this, otherwise it will complain.
-            $modelKeyName = (new $m)->getKeyName(); // This defaults to 'id' if not changed.
+            $modelKeyName = (new $m())->getKeyName(); // This defaults to 'id' if not changed.
 
             $slicedParentCommentsIds = $slicedParentComments->pluck($modelKeyName)->toArray();
 
             // Remove parent Comments from comments.
             $comments = $comments->where('child_id', '!=', '');
 
-            $grouped_comments = new \Illuminate\Pagination\LengthAwarePaginator(
-                $slicedParentComments->merge($comments)->groupBy('child_id'),
-                $parentComments->count(),
-                $perPage
-            );
+            $grouped_comments = new \Illuminate\Pagination\LengthAwarePaginator($slicedParentComments->merge($comments)->groupBy('child_id'), $parentComments->count(), $perPage);
 
             $grouped_comments->withPath(request()->url());
         } else {
             $grouped_comments = $comments->groupBy('child_id');
         }
     @endphp
-    @foreach($grouped_comments as $comment_id => $comments)
+    @foreach ($grouped_comments as $comment_id => $comments)
         {{-- Process parent nodes --}}
-        @if($comment_id == '')
-            @foreach($comments as $comment)
+        @if ($comment_id == '')
+            @foreach ($comments as $comment)
                 @include('comments::_comment', [
                     'comment' => $comment,
                     'grouped_comments' => $grouped_comments,
-                    'maxIndentationLevel' => $maxIndentationLevel ?? 3
+                    'maxIndentationLevel' => $maxIndentationLevel ?? 3,
                 ])
             @endforeach
         @endif
     @endforeach
 </div>
 
-@isset ($perPage)
+@isset($perPage)
     {{ $grouped_comments->links() }}
 @endisset
 
@@ -62,7 +62,7 @@
     @include('comments::_form')
 @elseif(Config::get('comments.guest_commenting') == true)
     @include('comments::_form', [
-        'guest_commenting' => true
+        'guest_commenting' => true,
     ])
 @else
     <div class="card">

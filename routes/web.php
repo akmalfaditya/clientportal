@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Project;
+use App\Models\Tutorial;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,10 @@ Route::get('/details/{id}', 'DetailController@index')->name('detail');
 Route::post('/details/{id}', 'DetailController@index')->name('detail');
 
 Route::get('/details/comments/{id}', 'DetailCommentController@index')->name('detail-comments');
+Route::post('/details/comments/{id}', 'DetailCommentController@index')->name('detail-comments');
+
+Route::get('/details/tutorials/{id}', 'DetailTutorialController@index')->name('detail-tutorial');
+Route::post('/details/tutorials/{id}', 'DetailTutorialController@index')->name('detail-tutorial');
 
 // Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
@@ -35,6 +40,7 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->namespace('Admin')->group
     Route::get('/', 'DashboardController@index')->name('admin-dashboard');
     Route::resource('client', ClientController::class);
     Route::resource('client.project', ProjectController::class)->shallow();
+    Route::resource('tutorial', TutorialController::class);
 });
 
 Auth::routes();

@@ -1,0 +1,23 @@
+// Tutorial
+.bg-comments {
+  background: #ffffff;
+  padding: 10px 32px;
+
+  .title-comment {
+    font-size: 28px;
+  }
+
+  @media (max-width: 576px) {
+    .title-comment {
+      font-size: 24px;
+    }
+  }
+}
+
+.bg-comment {
+  border-radius: 20px;
+  background: #f5f6fb;
+  height: 812px;
+
+
+}

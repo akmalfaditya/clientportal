@@ -77,7 +77,7 @@
                                     </select>
                                 </div>
 
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label>Progress</label>
                                     <div class="input-group">
                                         <input type="number" name="progress" class="form-control" required min="1"
@@ -86,7 +86,7 @@
                                             <span class="input-group-text">%</span>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="form-group">
                                     <label>Masa Aktif</label>
                                     <input type="datetime-local" name="masaaktif" value="{{ $item->masaaktif }}"
