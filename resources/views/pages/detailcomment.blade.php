@@ -75,7 +75,7 @@
 
     </div> --}}
 
-    <section class="">
+    {{-- <section class="">
         <div class="bg-comments bg-transparent" style="margin-top: 5vh; ">
             <div class="container">
                 <p class="my-auto text-dark title-comment font-weight-bold">Comment</p>
@@ -86,14 +86,30 @@
 
         </div>
 
-        {{-- <div class="bg-comment">
+        <div class="bg-comment">
             <div class="coloumn-send">
                 <div>
 
                 </div>
 
             </div>
-        </div> --}}
+        </div>
+
+    </section> --}}
+
+    <section class="">
+        <div class="bg-comments">
+            <div class="container">
+                <p class="my-auto text-dark title-comment font-weight-bold">Comment</p>
+            </div>
+        </div>
+
+        <!-- ADDING COMMENT -->
+        <div class="bg-comment container pt-5">
+
+            @comments(['model' => $client])
+        </div>
+
 
     </section>
 @endsection

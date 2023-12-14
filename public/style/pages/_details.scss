@@ -12,7 +12,7 @@ $font-subtitle-card: #8e9faf;
 
 .bg-nav {
   background: $secondary-details;
-
+  
   .nav-link {
     svg {
       fill: #8e9faf;
@@ -27,12 +27,15 @@ $font-subtitle-card: #8e9faf;
   background: $primary-details;
   padding-right: 0px;
   padding-left: 0px;
+  padding-top: 15px;
+
 }
 
 .page-details {
   background: $secondary-details;
   border-radius: 20px 20px 0px 0px;
   padding-top: 10px;
+  padding-bottom: 3vh;
 
   .bg-details {
     background: $primary-details;
@@ -191,6 +194,8 @@ $font-subtitle-card: #8e9faf;
   }
 
   @media (max-width: 576px) {
+    padding-bottom: 10vh;
+
     .radius-client-project {
       &::before {
         width: 5px;
@@ -275,6 +280,13 @@ $font-subtitle-card: #8e9faf;
 .section-2-card-2 {
   // width: 39.998%;
   width: 100%;
+  margin-left: 20px;
+  margin-right: 20px;
+
+  @media (max-width: 576px) {
+   margin-left: 0px;
+   margin-right: 0px;
+  }
 }
 
 .font-project {
@@ -320,11 +332,15 @@ $font-subtitle-card: #8e9faf;
 // section description 1
 
 .section-description-1 {
-  width: 30%;
+  margin-left: 40px;
+
+  @media (max-width: 576px) {
+    margin-left: 0px;
+   }
 }
 
 .img-client {
-  width: 50%;
+  width: 150px;
 }
 
 @include media-breakpoint-down(sm) {
@@ -412,8 +428,9 @@ $font-subtitle-card: #8e9faf;
 // adding style for navbar menu
 .bg-navbar {
   background: $secondary-details;
-  // margin-top: 20px;
   border-radius: 0px 0px 10px 10px;
+  padding-top: 0px;
+
 
   &::before {
     content: "";
@@ -432,8 +449,8 @@ $font-subtitle-card: #8e9faf;
   }
 
   .content-nav {
-    margin: 10px 80px 5px 80px;
-    padding: 15px 0px;
+    margin: 0px 80px 5px 80px;
+    padding: 25px 0px 5px 0px;
 
     .font-nav {
       font-family: "Poppins", sans-serif;
@@ -446,6 +463,14 @@ $font-subtitle-card: #8e9faf;
     svg.active {
       fill: #0368fb;
     }
+
+    a.nav-link {
+      font-size: 18px;
+    }
+  
+
+
+
   }
 
   @media (max-width: 992px) {
@@ -503,80 +528,9 @@ $font-subtitle-card: #8e9faf;
   }
 }
 
-//   .text-filter-white {
-//     &.button {
-//       color: #015ee4;
-//       background: $secondary-details;
-//     }
-//   }
-
-//   .margin-filter-white {
-//     &.button {
-//       padding: 3px 30px;
-//       margin-left: 35px;
-//     }
-//   }
-
-//   .margin-filter-blue {
-//     &.button {
-//       margin-right: 20px;
-//     }
-//   }
-
-//   @include media-query(1200px) {
-//     .margin-filter-white,
-//     .text-filter-white,
-//     .text-filter-blue {
-//       padding: 5px 80px;
-//     }
-//   }
-
-//   @include media-query(992px) {
-//     .margin-filter-white,
-//     .text-filter-white,
-//     .text-filter-blue {
-//       padding: 5px 50px;
-//     }
-//   }
-
-//   @include media-query(768px) {
-//     .margin-filter-white,
-//     .text-filter-white,
-//     .text-filter-blue {
-//       padding: 5px 30px;
-//     }
-//   }
-
-//   @include media-query(576px) {
-//     padding: 12px 0px;
-
-//     .margin-filter-white {
-//       padding: 3px 30px;
-//       margin-left: 35px;
-//     }
-
-//     .margin-filter-blue {
-//       margin-right: 20px;
-//     }
-
-//     .text-filter-white,
-//     .text-filter-blue {
-//       padding: 3px 10px;
-//       font-size: 14px;
-//     }
-//   }
-// }
-
-// @mixin media-query($breakpoint) {
-//   @media (max-width: $breakpoint) {
-//     @content;
-//   }
-// }
-
 // Circle Profile
 .profile {
   background: #0068ff;
-  // margin-top: 20vh;
 
   .bg-profile {
     margin: 0px 36px;
@@ -693,7 +647,7 @@ $font-subtitle-card: #8e9faf;
 
   @media (max-width: 576px) {
     margin: 0px;
-    padding: 0px;
+    padding: 20px 0px 0px 0px;
 
     .bg-profile {
       .text-name {
@@ -725,6 +679,8 @@ $font-subtitle-card: #8e9faf;
 .percentage-circle {
   padding-left: 0px;
   padding-right: 0px;
+  margin-right: 30px;
+  margin-left: 30px;
 }
 
 .percentage-svg {
@@ -755,8 +711,10 @@ $font-subtitle-card: #8e9faf;
   }
 
   @media (max-width: 576px) {
-    width: 75px;
-    height: 75px;
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+    margin-left: 10px;
 
     .circle,
     .circle-bg {

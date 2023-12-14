@@ -149,8 +149,7 @@
                                         </div>
 
                                         <!-- ADDING PERCENTAGE CIRCLE RANGE -->
-                                        <div
-                                            class="container d-flex justify-content-center align-items-center percentage-circle">
+                                        <div class=" d-flex justify-content-center align-items-center percentage-circle">
                                             <svg class="percentage-svg ongoing" width="100px" height="100px"
                                                 viewBox="-10 -10 120 120">
 

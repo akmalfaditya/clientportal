@@ -17,7 +17,7 @@
 
 </head>
 
-<body style="margin-bottom: 15vh;  {{ request()->is('details/comments*') ? 'background: #f5f6fb;' : '' }}">
+<body style="  {{ request()->is('details/comments*') ? 'background: #f5f6fb;' : '' }}">
 
     {{-- Navbar --}}
     {{-- @include('includes.navbar') --}}
@@ -36,7 +36,7 @@
             <div class="navbar-expand my-auto d-none d-sm-block"> <!-- Hide for screens smaller than 'sm' -->
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link font-nav" href="/details/{{ $client->slug }}">
+                        <a class="nav-link" href="/details/{{ $client->slug }}">
                             <svg class="d-inline-block align-top width-menu {{ request()->routeIs('detail') ? 'active' : '' }} "
                                 viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -46,7 +46,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/details/comments/{{ $client->slug }}">
+                        <a class="ml-4 nav-link" href="/details/comments/{{ $client->slug }}">
                             <svg class="d-inline-block align-top width-menu {{ request()->is('details/comments*') ? 'active' : '' }}"
                                 viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -58,7 +58,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/details/tutorials/{{ $client->slug }}">
+                        <a class="ml-4 nav-link" href="/details/tutorials/{{ $client->slug }}">
                             <svg class="d-inline-block align-top width-menu {{ request()->is('details/tutorials*') ? 'active' : '' }}"
                                 viewBox="0 0 35 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -82,7 +82,7 @@
     <!-- End of Nav Menu -->
 
     <!-- adding Mobile Menu -->
-    <nav class="navbar navbar-dark navbar-expand fixed-bottom d-md-none d-lg-none d-xl-none p-0 bg-nav ">
+    <nav class="navbar navbar-dark navbar-expand fixed-bottom d-md-none d-lg-none d-xl-none py-2 bg-nav ">
         <ul class="navbar-nav nav-justified w-100">
             <li class="nav-item">
                 <a href="/details/{{ $client->slug }}" class="nav-link text-center">
@@ -130,7 +130,12 @@
 
 
     {{-- Footer --}}
-    {{-- @include('includes.footer') --}}
+
+    @if (request()->is('details/comments*'))
+    @else
+        @include('includes.footer')
+    @endif
+
 
 
     {{-- Script --}}

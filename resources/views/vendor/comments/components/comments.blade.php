@@ -14,7 +14,7 @@
 
 
 
-<div>
+<div class="card border-0 bg-transparent" style="margin-bottom: 20vh;">
     @php
         $comments = $comments->sortBy('created_at');
 

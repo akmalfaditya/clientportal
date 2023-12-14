@@ -8,10 +8,15 @@ body {
 
 footer {
   border-top: 1px solid #e4e4e4;
-  // margin-top: 150px;
+  background: #0068ff;
 
   p {
-    color: #979797;
+    font-size: 18px;
+    margin: 0;
+  }
+
+  @media (max-width: 576px) {
+      display: none;
   }
 }
 

@@ -10,7 +10,7 @@
     <title>Tutorials - Portal Client</title>
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <link href="style/main.css" rel="stylesheet" />
+    <link href="/style/main.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -62,7 +62,7 @@
                             Tutorial
                         </a>
                     </li>
-                   
+
                 </ul>
             </div>
         </div>
@@ -71,7 +71,7 @@
     <!-- End of Nav Menu -->
 
     <!-- adding Mobile Menu -->
-    <nav class="navbar navbar-dark navbar-expand fixed-bottom d-md-none d-lg-none d-xl-none p-0 bg-nav ">
+    <nav class="navbar navbar-dark navbar-expand fixed-bottom d-md-none d-lg-none d-xl-none py-2 bg-nav ">
         <ul class="navbar-nav nav-justified w-100">
             <li class="nav-item">
                 <a href="/details.html" class="nav-link text-center">
@@ -108,16 +108,30 @@
     </nav>
     <!-- End Mobile Menu -->
 
-    <section class="">
-        <div class="bg-tutorials">
-            <div class="container">
-                <p class="my-auto text-white title-tutorial font-weight-bold">Tutorial</p>
+    <section class="bg-main-tutorial">
+
+        <div class="d-flex justify-content-center video py-4">
+            <div class="bg-tutorial">
+                <div class="d-flex justify-content-center">
+                    <iframe src="https://www.youtube.com/embed/SKh50WHPxk0?si=IAR4cEpYnRDvPd8X"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </div>
+                <div class="ml-3 mt-2">
+                    <h5 class="font-weight-normal font-title">Tutorial tambah produk toko online</h5>
+                    <p class="font-weight-light font-author">By admin</p>
+                </div>
             </div>
+
         </div>
         <div class="d-flex justify-content-center video mt-lg-3 mt-md-3 mt-sm-2">
             <div class="bg-tutorial">
                 <div class="d-flex justify-content-center">
-                    <iframe src="https://www.youtube.com/embed/SKh50WHPxk0?si=IAR4cEpYnRDvPd8X" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/SKh50WHPxk0?si=IAR4cEpYnRDvPd8X"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
                 </div>
                 <div class="ml-3 mt-2">
                     <h5 class="font-weight-normal font-title">Tutorial tambah produk toko online</h5>
@@ -131,15 +145,12 @@
 
     <footer>
         <div class="container">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <p class="pt-4 pb-2">
-                        2023 Copyright Project Portal. All Rights Reserved.
-                    </p>
-                </div>
-            </div>
+            <p class="pt-2 pb-2 text-center text-white">
+                2023 Copyright Project Portal. All Rights Reserved.
+            </p>
         </div>
     </footer>
+
 
     <!-- Bootstrap core JavaScript -->
     <script src="/vendor/jquery/jquery.slim.min.js"></script>
