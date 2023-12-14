@@ -16,6 +16,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('roles')->default('USER');
+            $table->longText('photo')->nullable();
             // admin (admin access)
         });
     }
@@ -29,6 +30,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             Schema::dropIfExists('roles');
+            Schema::dropIfExists('photo');
         });
     }
 };

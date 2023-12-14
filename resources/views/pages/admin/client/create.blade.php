@@ -44,6 +44,10 @@
                                     <input type="text" name="password" class="form-control" required>
 
                                 </div>
+                                <div class="form-group">
+                                    <label>Img Profil Client</label>
+                                    <input type="file" name="photo" class="form-control" required>
+                                </div>
                             </div>
                         </div>
                         <div class="row">

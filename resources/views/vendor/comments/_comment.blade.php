@@ -5,10 +5,19 @@
 @endphp
 
 <div id="comment-{{ $comment->getKey() }}" class="media">
-    <img class="mr-3"
+    @if ($comment->guest_email != null)
+        <img class="mr-3" src="{{ Storage::url($client->photo) }}"
+            alt="{{ $comment->commenter->name ?? $comment->guest_name }} Avatar"
+            style="border-radius:50%; max-height:40px; max-width:40px;">
+    @else
+        <img class="mr-3" src="{{ Storage::url($user->photo) }}"
+            alt="{{ $comment->commenter->name ?? $comment->guest_name }} Avatar"
+            style="border-radius:50%; max-height:40px; max-width:40px;">
+    @endif
+    {{-- <img class="mr-3"
         src="https://www.gravatar.com/avatar/{{ md5($comment->commenter->email ?? $comment->guest_email) }}.jpg?s=64"
         alt="{{ $comment->commenter->name ?? $comment->guest_name }} Avatar"
-        style="border-radius:50%; max-height:40px; max-width:40px;">
+        style="border-radius:50%; max-height:40px; max-width:40px;"> --}}
     <div class="media-body">
         <h5 class="mt-0 mb-1">{{ $comment->commenter->name ?? $comment->guest_name }} <small class="text-muted">-
                 {{ $comment->created_at->diffForHumans() }}</small></h5>

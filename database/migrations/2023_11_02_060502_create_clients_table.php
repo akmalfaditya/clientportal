@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug');
             $table->string('password');
+            $table->longText('photo');
             $table->softDeletes();
             $table->timestamps();
         });

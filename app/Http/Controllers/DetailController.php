@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Client;
 use App\Models\Project;
 use Illuminate\Http\Request;
@@ -20,6 +21,7 @@ class DetailController extends Controller
     {
         $client = Client::with(['projects'])->where('slug', $id)->firstOrFail();
         $project = Project::all()->where('clients_id', $client->id)->count();
+        
         $data = $request->password;
 
 
@@ -56,6 +58,7 @@ class DetailController extends Controller
         return view('pages.detail', [
             'client' => $client,
             'projecttotal' => $project,
+
 
         ]);
     }

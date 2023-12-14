@@ -1,7 +1,7 @@
 @extends('layouts.admin1')
 
 @section('title')
-    Edit Client {{ $item->name }}
+    Edit Password {{ $item->name }}
 @endsection
 
 @section('content')
@@ -25,37 +25,22 @@
             @endif
             <div class="card shadow border-0 p-3 mb-5"style="border-radius: 20px;">
                 <div class="card-body">
-                    <form action="{{ route('client.update', $item->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="/admin/user/editpassword/{{ $item->id }}" method="POST" enctype="multipart/form-data">
 
                         @method('PUT')
                         @csrf
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Nama Client</label>
-                                    <input type="text" name="name" class="form-control" value="{{ $item->name }}"
-                                        required>
 
-                                </div>
                                 <div class="form-group">
-                                    <label>Slug</label>
-                                    <input type="text" name="slug" class="form-control" value="{{ $item->slug }}"
-                                        required>
-
-                                </div>
-                                <div class="form-group">
-                                    <label>Password</label>
-                                    <input type="text" name="password" class="form-control" value="{{ $item->password }}"
-                                        required>
+                                    <label>Edit Password</label>
+                                    <input type="password" name="password" class="form-control" required>
 
                                 </div>
 
-                                <div class="form-group">
-                                    <label>Img Profil Client</label>
-                                    <input type="file" name="photo" class="form-control">
-                                    <img src="{{ Storage::url($item->photo) }}" height="250px" width="200"
-                                        style="object-fit: contain;">
-                                </div>
+
+
+
                             </div>
                         </div>
                         <div class="row">

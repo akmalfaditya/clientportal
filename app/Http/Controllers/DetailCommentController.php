@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Client;
 use App\Models\Project;
 use Illuminate\Http\Request;
@@ -20,6 +21,7 @@ class DetailCommentController extends Controller
     {
         $client = Client::with(['projects'])->where('slug', $id)->firstOrFail();
         $project = Project::all()->where('clients_id', $client->id)->count();
+        $user = User::findOrFail(1);
         $data = $request->password;
 
 
@@ -54,6 +56,7 @@ class DetailCommentController extends Controller
         return view('pages.detailcomment', [
             'client' => $client,
             'projecttotal' => $project,
+            'user' => $user,
 
         ]);
     }

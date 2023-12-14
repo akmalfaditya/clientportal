@@ -41,6 +41,9 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->namespace('Admin')->group
     Route::resource('client', ClientController::class);
     Route::resource('client.project', ProjectController::class)->shallow();
     Route::resource('tutorial', TutorialController::class);
+    Route::resource('user', UserController::class);
+    Route::get('/user/editpassword/{id}', 'UserController@editpassword')->name('user-edit-password');
+    Route::put('/user/editpassword/{id}', 'UserController@updatepassword')->name('user-edit-password');
 });
 
 Auth::routes();

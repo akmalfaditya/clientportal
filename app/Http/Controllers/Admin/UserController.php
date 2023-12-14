@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use App\Models\Client;
 use App\Models\Project;
 use Illuminate\Support\Str;
@@ -9,13 +10,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
 
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\Admin\UserRequest;
 use Yajra\DataTables\Facades\DataTables;
 use Yajra\DataTables\Contracts\DataTable;
 use App\Http\Requests\Admin\ClientRequest;
 
-class ClientController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -29,7 +32,7 @@ class ClientController extends Controller
 
 
         if (request()->ajax()) {
-            $query = Client::query();
+            $query = User::query();
 
 
             // $query = DB::table('clients')->get();
@@ -37,19 +40,19 @@ class ClientController extends Controller
                 ->addColumn('action', function ($item) {
                     return '
                     <div class="btn-group">
-                        <a href=" ' . route('client.project.index', $item->id) . ' " class="btn btn-dark rounded mb-3 mr-3">
-                            Project
-                        </a>
+
                         <div class="dropdown">
                             <button class="btn btn-primary dropdown-toggle mr-1 mb-1" type="button" data-toggle="dropdown">
                                 Aksi
                             </button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href=" ' . route('client.edit', $item->id) . ' ">
+                                <a class="dropdown-item" href=" ' . route('user.edit', $item->id) . ' ">
                                     Edit
                                 </a>
-                                <a class="dropdown-item" href="/details/' . $item->slug . '"target="_blank">View</a>
-                                <form action=" ' . route('client.destroy', $item->id) . ' " method="POST">
+                                <a class="dropdown-item" href="/admin/user/editpassword/' . $item->id . ' ">
+                                    Edit Password
+                                </a>
+                                <form action=" ' . route('user.destroy', $item->id) . ' " method="POST">
                                     ' . method_field('delete') . csrf_field() . '
                                     <button type="submit" class="dropdown-item text-danger">
                                         Delete
@@ -66,7 +69,7 @@ class ClientController extends Controller
 
 
 
-        return view('pages.admin.client.index');
+        return view('pages.admin.user.index');
     }
 
     /**
@@ -76,7 +79,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.client.create');
+        return view('pages.admin.user.create');
     }
 
     /**
@@ -85,14 +88,15 @@ class ClientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ClientRequest $request)
+    public function store(UserRequest $request)
     {
         $data = $request->all();
         $data['photo'] = $request->file('photo')->store('assets/imgproject', 'public');
 
-        Client::create($data);
+        $data['password'] = Hash::make($request->password);
+        User::create($data);
 
-        return redirect()->route('client.index');
+        return redirect()->route('user.index');
     }
 
     /**
@@ -114,10 +118,26 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-        $item = Client::findOrFail($id);
+        $item = User::findOrFail($id);
 
 
-        return view('pages.admin.client.edit', [
+        return view('pages.admin.user.edit', [
+            'item' => $item
+        ]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editpassword($id)
+    {
+        $item = User::findOrFail($id);
+
+
+        return view('pages.admin.user.editpassword', [
             'item' => $item
         ]);
     }
@@ -129,11 +149,11 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ClientRequest $request, $id)
+    public function update(UserRequest $request, $id)
     {
         $data = $request->all();
 
-        $item = Client::findOrFail($id);
+        $item = User::findOrFail($id);
         if ($request->hasFile('photo')) {
 
             $data['photo'] = $request->file('photo')->store('assets/imgproject', 'public');
@@ -145,9 +165,45 @@ class ClientController extends Controller
             $request['photo'] = $item->photo;
         }
 
+        // $data['password'] = Hash::make($request->password);
+
+
+
         $item->update($data);
 
-        return redirect()->route('client.index');
+        return redirect()->route('user.index');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updatepassword(UserRequest $request, $id)
+    {
+        $data = $request->all();
+
+        $item = User::findOrFail($id);
+        if ($request->hasFile('photo')) {
+
+            $data['photo'] = $request->file('photo')->store('assets/imgproject', 'public');
+            if ($item->photo) {
+                Storage::delete($item->photo);
+                File::delete(public_path('storage/' . $item->photo));
+            }
+        } else {
+            $request['photo'] = $item->photo;
+        }
+
+        $data['password'] = Hash::make($request->password);
+
+
+
+        $item->update($data);
+
+        return redirect()->route('user.index');
     }
 
     /**
@@ -158,16 +214,16 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        $item = Client::findOrFail($id);
-        $projectdelete = Project::where('clients_id', $id);
-        $project = Project::where('clients_id', $id)->get();
-        foreach ($project as $projects) {
-            File::delete(public_path('storage/' . $projects->photo));
-        }
+        $item = User::findOrFail($id);
+        // $projectdelete = Project::where('clients_id', $id);
+        // $project = Project::where('clients_id', $id)->get();
+        // foreach ($project as $projects) {
+        //     File::delete(public_path('storage/' . $projects->photo));
+        // }
         File::delete(public_path('storage/' . $item->photo));
 
         $item->delete();
-        $projectdelete->delete();
-        return redirect()->route('client.index');
+        // $projectdelete->delete();
+        return redirect()->route('user.index');
     }
 }

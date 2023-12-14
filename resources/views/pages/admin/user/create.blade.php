@@ -1,13 +1,13 @@
 @extends('layouts.admin1')
 
 @section('title')
-    Edit Client {{ $item->name }}
+    Add User
 @endsection
 
 @section('content')
 
     {{-- <div class="dashboard-heading">
-        <h2 class="dashboard-title font-weight-bolder">Edit Client</h2>
+        <h2 class="dashboard-title font-weight-bolder">Add New Client</h2>
 
     </div> --}}
 
@@ -24,37 +24,42 @@
                 </div>
             @endif
             <div class="card shadow border-0 p-3 mb-5"style="border-radius: 20px;">
-                <div class="card-body">
-                    <form action="{{ route('client.update', $item->id) }}" method="POST" enctype="multipart/form-data">
-
-                        @method('PUT')
+                <div class="card-body ">
+                    <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label>Nama Client</label>
-                                    <input type="text" name="name" class="form-control" value="{{ $item->name }}"
-                                        required>
+                                    <label>Nama User</label>
+                                    <input type="text" name="name" class="form-control" required>
 
                                 </div>
                                 <div class="form-group">
-                                    <label>Slug</label>
-                                    <input type="text" name="slug" class="form-control" value="{{ $item->slug }}"
-                                        required>
+                                    <label>Email</label>
+                                    <input type="email" name="email" class="form-control" required>
 
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <input type="text" name="password" class="form-control" value="{{ $item->password }}"
-                                        required>
+                                    <input type="text" name="password" class="form-control" required>
+
+                                </div>
+                                <div class="form-group">
+                                    <label>Roles</label>
+                                    <select class="form-control" name="roles" required>
+                                        <option value="" disabled selected>Pilih Roles</option>
+                                        <option value="USER">USER
+                                        </option>
+                                        <option value="ADMIN">ADMIN</option>
+
+
+                                    </select>
 
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Img Profil Client</label>
-                                    <input type="file" name="photo" class="form-control">
-                                    <img src="{{ Storage::url($item->photo) }}" height="250px" width="200"
-                                        style="object-fit: contain;">
+                                    <label>Img Project</label>
+                                    <input type="file" name="photo" class="form-control" required>
                                 </div>
                             </div>
                         </div>

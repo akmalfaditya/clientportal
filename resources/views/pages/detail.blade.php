@@ -14,7 +14,7 @@
             <!-- Profile Picture and Details -->
             <div class="d-flex justify-content-center">
                 <div class="circle-container rounded-circle overflow-hidden position-relative">
-                    <img src="/images/dashboard/user-circle.svg" alt="Image" class="circle-image w-100 h-100 ">
+                    <img src="{{ Storage::url($client->photo) }}" alt="Image" class="circle-image w-100 h-100 ">
                 </div>
                 <div
                     class="circle-name d-flex justify-content-center align-items-center position-absolute overflow-hidden rounded-circle">
@@ -28,7 +28,7 @@
 
             <!-- Jumlah Project Section -->
             <div class="d-flex justify-content-center text-center my-auto">
-                <h5 class="text-white my-auto">Jumlah Project</h5>
+                <h5 class="text-white my-auto">Jumlah Projek</h5>
                 <span class="text-white my-auto span-profile">|</span>
                 <h1 class="text-white my-auto">{{ $projecttotal }}</h1>
             </div>

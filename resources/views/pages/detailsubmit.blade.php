@@ -12,10 +12,10 @@
                 <div class="container">
                     <div class="mobile-card-1 d-flex flex-row justify-content-between "
                         style="margin-top: 25vh;margin-bottom: 25vh;">
-                        <div class="d-flex flex-row justify-content-between p-card-1 bg-light">
+                        <div class="d-flex flex-row justify-content-between p-card-1 bg-transparent">
                             <div class="mobile-card-1 p-2 d-flex justify-content-center align-items-center">
                                 <div>
-                                    <h2 class="h2-contact">Halo {{ $client->name }}</h2>
+                                    <h2 class="h2-contact">Hello, {{ $client->name }}</h2>
                                     <p class="p-contact mb-3">
                                         Masukkan password yang sudah diberikan admin
                                     </p>
@@ -53,7 +53,7 @@
 
                         <div class="d-flex flex-row justify-content-between p-card-2 bg-primary">
                             <div class="section-1-card-2 p-2 d-flex justify-content-center align-items-center">
-                                <p class="font-project text-white h3">Number of Projects</p>
+                                <p class="font-project text-white h3">Jumlah Projek</p>
                             </div>
                             <div class="section-2-card-2 d-flex justify-content-center align-items-center">
                                 <p class="font-number text-white h3">{{ $projecttotal }}</p>
