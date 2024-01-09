@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('duration');
             $table->longText('url_thumbnail');
             $table->longText('embed_html');
+            $table->string('published_at');
             $table->longText('link');
             $table->softDeletes();
             $table->timestamps();

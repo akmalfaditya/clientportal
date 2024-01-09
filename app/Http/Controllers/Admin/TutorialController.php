@@ -19,6 +19,8 @@ use App\Http\Requests\Admin\TutorialRequest;
 use App\Models\Tutorial;
 use Carbon\Carbon;
 use Carbon\CarbonInterval;
+use DateTime;
+use DateTimeZone;
 
 class TutorialController extends Controller
 {
@@ -95,10 +97,15 @@ class TutorialController extends Controller
 
         $videoId = Youtube::parseVidFromURL($request->link);
         $video = Youtube::getVideoInfo($videoId);
-
+        // dd($video);
         $carbonDuration = CarbonInterval::create($video->contentDetails->duration);
         $durationInSeconds = intval($carbonDuration->totalSeconds);
 
+        // Membuat objek DateTime dari format ISO 8601 dan menetapkan zona waktu
+        $iso8601DateTime = $video->snippet->publishedAt;
+        $dateTime = new DateTime($iso8601DateTime, new DateTimeZone('UTC'));
+        // Mengonversi ke format "23 Desember 2023"
+        $formattedDate = $dateTime->format('d F Y');
 
         if ($durationInSeconds > 3600) {
             $hours = floor($durationInSeconds / 3600);
@@ -127,6 +134,7 @@ class TutorialController extends Controller
             'url_thumbnail' => $video->snippet->thumbnails->high->url,
             'embed_html' => $video->player->embedHtml,
             'duration' => $duration,
+            'published_at' => $formattedDate,
             'link' => $request->link,
         ]);
 
@@ -177,6 +185,11 @@ class TutorialController extends Controller
         $carbonDuration = CarbonInterval::create($video->contentDetails->duration);
         $durationInSeconds = intval($carbonDuration->totalSeconds);
 
+        // Membuat objek DateTime dari format ISO 8601 dan menetapkan zona waktu
+        $iso8601DateTime = $video->snippet->publishedAt;
+        $dateTime = new DateTime($iso8601DateTime, new DateTimeZone('UTC'));
+        // Mengonversi ke format "23 Desember 2023"
+        $formattedDate = $dateTime->format('d F Y');
 
         if ($durationInSeconds > 3600) {
             $hours = floor($durationInSeconds / 3600);
@@ -205,6 +218,7 @@ class TutorialController extends Controller
             'url_thumbnail' => $video->snippet->thumbnails->high->url,
             'embed_html' => $video->player->embedHtml,
             'duration' => $duration,
+            'published_at' => $formattedDate,
             'link' => $request->link,
         ]);
 
