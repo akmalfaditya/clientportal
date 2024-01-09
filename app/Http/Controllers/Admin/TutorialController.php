@@ -96,17 +96,27 @@ class TutorialController extends Controller
         $videoId = Youtube::parseVidFromURL($request->link);
         $video = Youtube::getVideoInfo($videoId);
 
-        // $carbon = Carbon::parse($video->contentDetails->duration);
-
-
-
         $carbonDuration = CarbonInterval::create($video->contentDetails->duration);
-        $durationMinute = intval($carbonDuration->totalMinutes);
+        $durationInSeconds = intval($carbonDuration->totalSeconds);
 
-        if ($durationMinute > 60) {
-            $duration = $carbonDuration->format('H:i:s');
+
+        if ($durationInSeconds > 3600) {
+            $hours = floor($durationInSeconds / 3600);
+            $minutes = floor(($durationInSeconds % 3600) / 60);
+            $seconds = $durationInSeconds % 60;
+
+            // Mendapatkan format jam:menit:detik
+            $formattedDuration = sprintf('%02d:%02d:%02d', $hours, $minutes, $seconds);
+
+            $duration = $formattedDuration;
         } else {
-            $duration = $carbonDuration->format('H:i:s');
+            $minutes = floor($durationInSeconds / 60);
+            $seconds = $durationInSeconds % 60;
+
+            // Mendapatkan format menit:detik
+            $formattedDuration = sprintf('%02d:%02d', $minutes, $seconds);
+
+            $duration = $formattedDuration;
         }
         // dd($video);
 
@@ -159,11 +169,45 @@ class TutorialController extends Controller
      */
     public function update(TutorialRequest $request, $id)
     {
-        $data = $request->all();
-
         $item = Tutorial::findOrFail($id);
 
-        $item->update($data);
+        $videoId = Youtube::parseVidFromURL($request->link);
+        $video = Youtube::getVideoInfo($videoId);
+
+        $carbonDuration = CarbonInterval::create($video->contentDetails->duration);
+        $durationInSeconds = intval($carbonDuration->totalSeconds);
+
+
+        if ($durationInSeconds > 3600) {
+            $hours = floor($durationInSeconds / 3600);
+            $minutes = floor(($durationInSeconds % 3600) / 60);
+            $seconds = $durationInSeconds % 60;
+
+            // Mendapatkan format jam:menit:detik
+            $formattedDuration = sprintf('%02d:%02d:%02d', $hours, $minutes, $seconds);
+
+            $duration = $formattedDuration;
+        } else {
+            $minutes = floor($durationInSeconds / 60);
+            $seconds = $durationInSeconds % 60;
+
+            // Mendapatkan format menit:detik
+            $formattedDuration = sprintf('%02d:%02d', $minutes, $seconds);
+
+            $duration = $formattedDuration;
+        }
+        // dd($video);
+
+        $item->update([
+            'author' => $request->author,
+            'title' => $video->snippet->title,
+            'description' => $video->snippet->description,
+            'url_thumbnail' => $video->snippet->thumbnails->high->url,
+            'embed_html' => $video->player->embedHtml,
+            'duration' => $duration,
+            'link' => $request->link,
+        ]);
+
 
         return redirect()->route('tutorial.index');
     }

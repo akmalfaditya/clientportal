@@ -24,7 +24,7 @@
                                     <th>ID</th>
                                     <th>Thumbnail</th>
                                     <th>Title</th>
-                                    <th>Link Youtube</th>
+                                    <th>Duration</th>
                                     <th>Author</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -61,8 +61,8 @@
                 },
 
                 {
-                    data: 'link',
-                    name: 'link'
+                    data: 'duration',
+                    name: 'duration'
                 },
                 {
                     data: 'author',
