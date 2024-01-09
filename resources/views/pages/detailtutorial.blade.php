@@ -55,7 +55,7 @@
             <div class="d-flex justify-content-center video mt-lg-3 mt-md-3 mt-sm-2">
                 <div class="bg-tutorial">
                     <div class="d-flex justify-content-center">
-                        <iframe src="{{ $tutorials->link }}" title="YouTube video player" frameborder="0"
+                        <iframe src="{{ $tutorials->embed_html }}" title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowfullscreen></iframe>
                     </div>
