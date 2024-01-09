@@ -38,13 +38,7 @@
 
                                 </div>
                                 <div class="form-group">
-                                    <label>Title</label>
-                                    <input type="text" name="title" class="form-control" value="{{ $item->title }}"
-                                        required>
-
-                                </div>
-                                <div class="form-group">
-                                    <label>Link Embed Youtube</label>
+                                    <label>Link Youtube</label>
                                     <input type="text" name="link" class="form-control" value="{{ $item->link }}"
                                         required>
 
