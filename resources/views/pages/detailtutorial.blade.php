@@ -58,7 +58,7 @@
                         {{-- <iframe src="{{ $tutorials->embed_html }}" title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowfullscreen></iframe> --}}
-                        {{!! $tutorials->embed_html !!}}
+                        {!! $tutorials->embed_html !!}
                     </div>
                     <div class="ml-3 mt-2">
                         <h5 class="font-weight-normal font-title">{{ $tutorials->title }}</h5>
