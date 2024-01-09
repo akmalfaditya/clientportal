@@ -13,7 +13,7 @@ class Tutorial extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'author', 'title', 'link',
+        'author', 'title', 'description', 'url_thumbnail', 'embed_html', 'link', 'duration',
     ];
 
     protected $hidden = [];

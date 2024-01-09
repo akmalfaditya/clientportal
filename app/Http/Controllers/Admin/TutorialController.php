@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Alaouy\Youtube\Facades\Youtube;
 use App\Models\Client;
 use App\Models\Project;
 use Illuminate\Support\Str;
@@ -16,6 +17,8 @@ use Yajra\DataTables\Contracts\DataTable;
 use App\Http\Requests\Admin\ClientRequest;
 use App\Http\Requests\Admin\TutorialRequest;
 use App\Models\Tutorial;
+use Carbon\Carbon;
+use Carbon\CarbonInterval;
 
 class TutorialController extends Controller
 {
@@ -59,7 +62,10 @@ class TutorialController extends Controller
                     </div>
                 ';
                 })
-                ->rawColumns(['action'])
+                ->editColumn('url_thumbnail', function ($item) {
+                    return '<img style="width: 160px; height: 90px" src="' . $item->url_thumbnail . '"/>';
+                })
+                ->rawColumns(['action', 'url_thumbnail'])
                 ->make();
         }
 
@@ -86,9 +92,33 @@ class TutorialController extends Controller
      */
     public function store(TutorialRequest $request)
     {
-        $data = $request->all();
 
-        Tutorial::create($data);
+        $videoId = Youtube::parseVidFromURL($request->link);
+        $video = Youtube::getVideoInfo($videoId);
+
+        // $carbon = Carbon::parse($video->contentDetails->duration);
+
+
+
+        $carbonDuration = CarbonInterval::create($video->contentDetails->duration);
+        $durationMinute = intval($carbonDuration->totalMinutes);
+
+        if ($durationMinute > 60) {
+            $duration = $carbonDuration->format('H:i:s');
+        } else {
+            $duration = $carbonDuration->format('H:i:s');
+        }
+        // dd($video);
+
+        Tutorial::create([
+            'author' => $request->author,
+            'title' => $video->snippet->title,
+            'description' => $video->snippet->description,
+            'url_thumbnail' => $video->snippet->thumbnails->high->url,
+            'embed_html' => $video->player->embedHtml,
+            'duration' => $duration,
+            'link' => $request->link,
+        ]);
 
         return redirect()->route('tutorial.index');
     }

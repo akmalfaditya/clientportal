@@ -17,7 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('author');
             $table->string('title');
-            $table->string('link');
+            $table->longText('description');
+            $table->string('duration');
+            $table->longText('url_thumbnail');
+            $table->longText('embed_html');
+            $table->longText('link');
             $table->softDeletes();
             $table->timestamps();
         });

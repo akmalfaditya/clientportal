@@ -36,13 +36,10 @@
 
                                 </div>
                                 <div class="form-group">
-                                    <label>Title</label>
-                                    <input type="text" name="title" class="form-control" required>
-
-                                </div>
-                                <div class="form-group">
-                                    <label>Link Embed Youtube</label>
-                                    <input type="text" name="link" class="form-control" required>
+                                    <label>Link Youtube</label>
+                                    <input type="text" name="link" class="form-control"
+                                        placeholder="Link harus berformat: https://www.youtube.com/watch?v=QOHOp_Aph68"
+                                        required>
 
                                 </div>
                             </div>

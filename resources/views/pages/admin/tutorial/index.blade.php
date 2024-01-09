@@ -22,9 +22,10 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Author</th>
+                                    <th>Thumbnail</th>
                                     <th>Title</th>
-                                    <th>Link Embed</th>
+                                    <th>Link Youtube</th>
+                                    <th>Author</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -51,16 +52,21 @@
                     name: 'id'
                 },
                 {
-                    data: 'author',
-                    name: 'author'
+                    data: 'url_thumbnail',
+                    name: 'url_thumbnail'
                 },
                 {
                     data: 'title',
                     name: 'title'
                 },
+
                 {
                     data: 'link',
                     name: 'link'
+                },
+                {
+                    data: 'author',
+                    name: 'author'
                 },
                 {
                     data: 'action',

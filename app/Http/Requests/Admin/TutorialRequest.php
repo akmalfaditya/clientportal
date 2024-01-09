@@ -25,7 +25,6 @@ class TutorialRequest extends FormRequest
     {
         return [
             'author' => 'required|string',
-            'title' => 'required|string',
             'link' => 'required|string',
         ];
     }

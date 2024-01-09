@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Helpers\ResponseFormatter;
 use App\Http\Controllers\Controller;
 use App\Models\Client;
+use App\Models\Tutorial;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -34,5 +35,61 @@ class ClientController extends Controller
                 'error' => $error
             ], 'Authentication Failed', 500);
         }
+    }
+
+    public function allTutorial(Request $request)
+    {
+        $id = $request->id;
+        $title = $request->title;
+        $tutorials = Tutorial::get();
+
+        if ($tutorials->isEmpty()) {
+            return ResponseFormatter::error(
+                null,
+                'Data tutorials tidak ada'
+            );
+        }
+
+        if ($id) {
+            $target = $tutorials->find($id);
+            if ($target) {
+                return ResponseFormatter::success(
+                    $target,
+                    'Data tutorials berhasil diambil'
+                );
+            } else {
+                return ResponseFormatter::error(
+                    null,
+                    'Data tutorials tidak ada'
+                );
+            }
+        }
+
+        if ($title) {
+            $target = $tutorials->where('title', 'like', '%' . $title . '%')->get();
+            if ($target) {
+                if ($target->isEmpty()) {
+                    return ResponseFormatter::success(
+                        null,
+                        'Data tutorial like title = ' . $title . ' tidak ada '
+                    );
+                }
+                return ResponseFormatter::success(
+                    $target,
+                    'tutorial like title =' . $title . ' berhasil diambil'
+                );
+            } else {
+                return ResponseFormatter::error(
+                    null,
+                    'Data tutorial tidak ada'
+                );
+            }
+        }
+
+
+        return ResponseFormatter::success(
+            $tutorials,
+            'Data tutorial berhasil diambil'
+        );
     }
 }

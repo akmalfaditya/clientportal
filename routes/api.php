@@ -19,4 +19,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('login', [ClientController::class, 'login']);
+Route::name('client.')->prefix('client')->group(function () {
+    Route::post('login', [ClientController::class, 'login']);
+});
+
+Route::get('tutorials', [ClientController::class, 'allTutorial']);
