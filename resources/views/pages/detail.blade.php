@@ -41,11 +41,11 @@
     <!-- ADDING NEW BUTTON FILTER CATEGORY -->
     <div class=" d-flex justify-content-center bg-filter">
         <button class="btn px-lg-5 px-sm-4 text-filter-set" onclick="filterProjects('all')" data-category="all">All</button>
-        <button class="btn px-lg-4 px-sm-4 ml-lg-4 ml-md-4 ml-sm-2 text-filter" onclick="filterProjects('ongoing')"
+        <button class="btn px-lg-4 px-sm-4 ml-lg-4 ml-md-4 ml-sm-2 text-filter" onclick="filterProjects('On Going')"
             data-category="ongoing">Ongoing</button>
-        <button class="btn px-lg-3 px-sm-4 ml-lg-4 ml-md-4 ml-sm-2 text-filter" onclick="filterProjects('completed')"
+        <button class="btn px-lg-3 px-sm-4 ml-lg-4 ml-md-4 ml-sm-2 text-filter" onclick="filterProjects('Completed')"
             data-category="completed">Completed</button>
-        <button class="btn px-lg-4 px-sm-4 ml-lg-4 ml-md-4 ml-sm-2 text-filter" onclick="filterProjects('revision')"
+        <button class="btn px-lg-4 px-sm-4 ml-lg-4 ml-md-4 ml-sm-2 text-filter" onclick="filterProjects('Revision')"
             data-category="revision">Revision</button>
     </div>
 
@@ -157,7 +157,7 @@
                                                 <path class="circle" d="M0,50 A50,50,0 1 1 100,50 A50,50,0 1 1 0,50" />
                                                 <text class="percentage" transform="rotate(-90 50 50)"
                                                     xml:space="preserve" y="59"
-                                                    x="50">{{ $project->status == 'ongoing' ? '35%' : ($project->status == 'revision' ? '65%' : ($project->status == 'completed' ? '100%' : '')) }}</text>
+                                                    x="50">{{ $project->status == 'On Going' ? '35%' : ($project->status == 'Revision' ? '65%' : ($project->status == 'Completed' ? '100%' : '')) }}</text>
                                             </svg>
                                         </div>
 
