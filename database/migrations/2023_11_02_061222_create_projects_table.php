@@ -19,7 +19,7 @@ return new class extends Migration
             $table->bigInteger('clients_id');
             $table->string('name');
             $table->string('jenis');
-            $table->string('keterangan');
+            $table->longText('keterangan');
             $table->dateTime('deadline');
             $table->string('status');
             // $table->bigInteger('progress');

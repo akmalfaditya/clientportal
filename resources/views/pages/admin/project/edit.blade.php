@@ -43,10 +43,10 @@
                                     <select class="form-control" name="jenis" required>
                                         <option value="Website Informasi (BASIC)">Website Informasi (BASIC)
                                         </option>
-                                        <option value="Website Informasi (PRO)">Website Informasi (Pro)</option>
+                                        <option value="Website Informasi (PRO)">Website Informasi (PRO)</option>
                                         <option value="Website Bisnis (BASIC)">Website Bisnis (BASIC)
                                         </option>
-                                        <option value="Website Bisnis (PRO)">Website Bisnis (Pro)</option>
+                                        <option value="Website Bisnis (PRO)">Website Bisnis (PRO)</option>
                                         <option value="Landing Page">Landing Page</option>
                                         <option value="{{ $item->jenis }}" selected>{{ $item->jenis }}
                                         </option>
@@ -55,8 +55,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Keterangan</label>
-                                    <input type="text" name="keterangan" value="{{ $item->keterangan }}"
-                                        class="form-control" required>
+                                    <textarea type="text" name="keterangan" value="{{ $item->keterangan }}" class="form-control" required></textarea>
 
                                 </div>
 
@@ -72,7 +71,7 @@
                                         <option value="On Going">On Going</option>
                                         <option value="Revision">Revision</option>
                                         <option value="Completed">Completed</option>
-                                        <option value="{{ $item->status }}" selected>{{ $item->status }}
+                                        <option value="{{ $item->status }}" selected disabled>{{ $item->status }}
                                         </option>
                                     </select>
                                 </div>

@@ -43,10 +43,10 @@
                                     <select class="form-control" name="jenis" required>
                                         <option value="Website Informasi (BASIC)">Website Informasi (BASIC)
                                         </option>
-                                        <option value="Website Informasi (PRO)">Website Informasi (Pro)</option>
+                                        <option value="Website Informasi (PRO)">Website Informasi (PRO)</option>
                                         <option value="Website Bisnis (BASIC)">Website Bisnis (BASIC)
                                         </option>
-                                        <option value="Website Bisnis (PRO)">Website Bisnis (Pro)</option>
+                                        <option value="Website Bisnis (PRO)">Website Bisnis (PRO)</option>
                                         <option value="Landing Page">Landing Page</option>
                                         <option value="" disabled selected>Pilih Project</option>
                                     </select>
@@ -54,8 +54,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Keterangan</label>
-                                    <input type="text" name="keterangan" class="form-control" required>
-
+                                    <textarea type="text" rows="4" name="keterangan" class="form-control h-10" required></textarea>
                                 </div>
 
                                 <div class="form-group">

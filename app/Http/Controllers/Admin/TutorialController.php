@@ -97,7 +97,7 @@ class TutorialController extends Controller
 
         $videoId = Youtube::parseVidFromURL($request->link);
         $video = Youtube::getVideoInfo($videoId);
-        // dd($video);
+
         $carbonDuration = CarbonInterval::create($video->contentDetails->duration);
         $durationInSeconds = intval($carbonDuration->totalSeconds);
 
@@ -213,7 +213,7 @@ class TutorialController extends Controller
 
         $item->update([
             'author' => $request->author,
-            'title' => $video->snippet->title,
+            'title' => $request->snippet->title,
             'description' => $video->snippet->description,
             'url_thumbnail' => $video->snippet->thumbnails->high->url,
             'embed_html' => $video->player->embedHtml,
