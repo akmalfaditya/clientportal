@@ -55,14 +55,14 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Keterangan</label>
-                                    <textarea type="text" name="keterangan" value="{{ $item->keterangan }}" class="form-control" required></textarea>
+                                    <textarea type="text" name="keterangan" value="{{ $item->keterangan }}" class="form-control" required>{{ $item->keterangan }}</textarea>
 
                                 </div>
 
                                 <div class="form-group">
                                     <label>Deadline</label>
-                                    <input type="datetime-local" name="deadline" value="{{ $item->deadline }}"
-                                        class="form-control" required>
+                                    <input type="datetime-local" rows="5" name="deadline"
+                                        value="{{ $item->deadline }}" class="form-control" required>
                                 </div>
 
                                 <div class="form-group">

@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Keterangan</label>
-                                    <textarea type="text" rows="4" name="keterangan" class="form-control h-10" required></textarea>
+                                    <textarea type="text" rows="5" name="keterangan" class="form-control h-10" required></textarea>
                                 </div>
 
                                 <div class="form-group">
